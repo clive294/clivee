@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clive Gaming</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #f2f2f2;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #00ffcc;
+    }
+    nav {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #00ffcc;
+    }
+    .content {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .game-card {
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,204,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,255,204,0.4);
+    }
+    .game-card img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .game-card h3 {
+      margin-top: 10px;
+      color: #00ffcc;
+    }
+    footer {
+      background-color: #1a1a1a;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Clive Gaming</h1>
+    <p>Pogi Ni Clive Gagihttp://localhost:7700/index.html</p>
+  </header>
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('games')">Games</a>
+    <a onclick="showSection('news')">News</a>
+    <a onclick="showSection('reviews')">Reviews</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+
+  <div id="home" class="content">
+    <div class="game-card">
+      <img src="https://via.placeholder.com/300x150" alt="Welcome">
+      <h3>Welcome to Clive Gaming</h3>
+      <p>Discover the latest games, news, and reviews in one place.</p>
+    </div>
+  </div>
+
+  <div id="games" class="content hidden">
+    <div class="game-card">
+      <img src="https://via.placeholder.com/300x150" alt="Game 1">
+      <h3>Cyber Knight</h3>
+      <p>Explore a futuristic world in this thrilling RPG.</p>
+    </div>
+    <div class="game-card">
+      <img src="https://via.placeholder.com/300x150" alt="Game 2">
+      <h3>Dragon Hunt</h3>
+      <p>Slay dragons and conquer dungeons in this fantasy adventure.</p>
+    </div>
+    <div class="game-card">
+      <img src="https://via.placeholder.com/300x150" alt="Game 3">
+      <h3>Speed Racer X</h3>
+      <p>Fast-paced racing game with ultra graphics and smooth controls.</p>
+    </div>
+  </div>
+
+  <div id="news" class="content hidden">
+    <div class="game-card">
+      <h3>Game Awards 2025 Announced!</h3>
+      <p>See which titles took home the top prizes this year.</p>
+    </div>
+    <div class="game-card">
+      <h3>Next-Gen Console Leaks</h3>
+      <p>Rumors suggest powerful hardware and new features for gamers.</p>
+    </div>
+  </div>
+
+  <div id="reviews" class="content hidden">
+    <div class="game-card">
+      <h3>Dione Review</h3>
+      <p>"Ampogi ni clive tapos ganda pa ng games." - 9/10</p>
+    </div>
+    <div class="game-card">
+      <h3>James Review</h3>
+      <p>"Ganda." - 8.5/10</p>
+    </div>
+  </div>
+
+  <div id="contact" class="content hidden">
+    <div class="game-card">
+      <h3>Contact Us</h3>
+      <p>Email: na forgot ko</p>
+      <p>Facebook: Clive Kyael Trongco</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Clive Gaming. All rights reserved.
+  </footer>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(section => {
+        section.classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
