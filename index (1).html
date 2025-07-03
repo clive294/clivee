@@ -71,12 +71,48 @@
     .hidden {
       display: none;
     }
+    .review-form {
+      margin-top: 20px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+    }
+    .review-form button {
+      padding: 10px 15px;
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .review-form button:hover {
+      background-color: #00ccaa;
+    }
+    .review-list {
+      margin-top: 10px;
+    }
+    .review-list p {
+      background-color: #2a2a2a;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Clive Gaming</h1>
-    <p>Pogi Ni Clive Gagi</p>
+    <p>Your ultimate hub for everything gaming!</p>
   </header>
   <nav>
     <a onclick="showSection('home')">Home</a>
@@ -125,20 +161,28 @@
 
   <div id="reviews" class="content hidden">
     <div class="game-card">
-      <h3>Dione Review</h3>
-      <p>"Ampogi ni clive tapos ganda pa ng games." - 9/10</p>
+      <h3>Cyber Knight Review</h3>
+      <p>"An exciting ride with immersive storytelling." - 9/10</p>
     </div>
     <div class="game-card">
-      <h3>James Review</h3>
-      <p>"Ganda." - 8.5/10</p>
+      <h3>Dragon Hunt Review</h3>
+      <p>"Challenging and rewarding for true adventurers." - 8.5/10</p>
+    </div>
+
+    <div class="review-form">
+      <h3>Leave Your Review</h3>
+      <input type="text" id="userName" placeholder="Your name...">
+      <textarea id="userReview" placeholder="Write your review here..."></textarea>
+      <button onclick="submitReview()">Submit</button>
+      <div class="review-list" id="reviewList"></div>
     </div>
   </div>
 
   <div id="contact" class="content hidden">
     <div class="game-card">
       <h3>Contact Us</h3>
-      <p>Email: na forgot ko</p>
-      <p>Facebook: Clive Kyael Trongco</p>
+      <p>Email: support@clivegaming.com</p>
+      <p>Twitter: @clivegaming</p>
     </div>
   </div>
 
@@ -153,6 +197,22 @@
         section.classList.add('hidden');
       });
       document.getElementById(id).classList.remove('hidden');
+    }
+
+    function submitReview() {
+      const name = document.getElementById("userName").value.trim();
+      const review = document.getElementById("userReview").value.trim();
+      const list = document.getElementById("reviewList");
+
+      if (name && review) {
+        const p = document.createElement("p");
+        p.innerHTML = `<strong>${name}:</strong> ${review}`;
+        list.appendChild(p);
+        document.getElementById("userName").value = "";
+        document.getElementById("userReview").value = "";
+      } else {
+        alert("Please enter your name and review.");
+      }
     }
   </script>
 </body>
