@@ -191,6 +191,11 @@
   </footer>
 
   <script>
+    window.onload = function () {
+      showSection('home');
+      loadReviews();
+    };
+
     function showSection(id) {
       const sections = document.querySelectorAll('.content');
       sections.forEach(section => {
@@ -205,14 +210,28 @@
       const list = document.getElementById("reviewList");
 
       if (name && review) {
-        const p = document.createElement("p");
-        p.innerHTML = `<strong>${name}:</strong> ${review}`;
-        list.appendChild(p);
+        const reviewData = { name, review };
+        const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+        reviews.push(reviewData);
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+
+        displayReview(reviewData);
         document.getElementById("userName").value = "";
         document.getElementById("userReview").value = "";
       } else {
         alert("Please enter your name and review.");
       }
+    }
+
+    function displayReview({ name, review }) {
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${name}:</strong> ${review}`;
+      document.getElementById("reviewList").appendChild(p);
+    }
+
+    function loadReviews() {
+      const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+      reviews.forEach(displayReview);
     }
   </script>
 </body>
